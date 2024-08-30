@@ -16,9 +16,10 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'My Favorite Places',
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        home: const FavoritePlacesScreen());
+      title: 'My Favorite Places',
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      home: const FavoritePlacesScreen(),
+    );
   }
 }
