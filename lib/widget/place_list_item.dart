@@ -10,8 +10,8 @@ class PlaceListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: TextButton(
-        onPressed: () {
+      child: InkWell(
+        onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => DetailPlaceScreen(place: place),
           ));

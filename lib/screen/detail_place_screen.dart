@@ -13,7 +13,10 @@ class DetailPlaceScreen extends StatelessWidget {
         title: Text(place.title ?? 'No title entered'),
       ),
       body: Center(
-        child: Text(place.description ?? 'No description entered'),
+        child: Text(
+          place.description ?? 'No description entered',
+          style: const TextStyle(fontSize: 20),
+        ),
       ),
     );
   }
