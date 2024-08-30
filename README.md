@@ -1,3 +1,3 @@
-# my_favorite_places
+# My Favorite Places
 
-A new Flutter project.
+With this app I will save my favorite places.
