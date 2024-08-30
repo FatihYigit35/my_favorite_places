@@ -30,7 +30,9 @@ class _FavoritePlacesScreenState extends ConsumerState<FavoritePlacesScreen> {
       content = ListView.builder(
         itemCount: places.length,
         itemBuilder: (context, index) {
-          return PlaceListItem(places[index].title ?? 'No title entered');
+          return PlaceListItem(
+            place: places[index],
+          );
         },
       );
     }
