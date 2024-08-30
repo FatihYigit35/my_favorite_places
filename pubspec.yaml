@@ -1,5 +1,5 @@
 name: my_favorite_places
-description: "A new Flutter project."
+description: "With this app I will save my favorite"
 publish_to: 'none'
 version: 0.1.0
 
@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  google_fonts: ^6.2.1
+  riverpod: ^2.5.1
 
 dev_dependencies:
   flutter_test:
