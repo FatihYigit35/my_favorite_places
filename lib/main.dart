@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_favorite_places/screen/favorite_places_screen.dart';
 import 'package:my_favorite_places/theme/dark_theme.dart';
 import 'package:my_favorite_places/theme/light_theme.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const ProviderScope(
+    child: MainApp(),
+  ));
 }
 
 class MainApp extends StatelessWidget {
