@@ -1,12 +1,12 @@
 class PlaceItem {
   const PlaceItem({
-    this.name,
+    this.title,
     this.description,
     this.location,
     this.images,
   });
 
-  final String? name;
+  final String? title;
   final String? description;
   final String? location;
   final List<Uri>? images;
