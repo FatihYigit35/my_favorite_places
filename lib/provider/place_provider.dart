@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_favorite_places/model/place_item.dart';
+
+import '../model/place_item.dart';
 
 class PlaceNotifier extends StateNotifier<List<PlaceItem>> {
-  PlaceNotifier() : super([]);
+  PlaceNotifier() : super(const []);
 
   void addPlace(PlaceItem place) {
     final newList = state.toList();

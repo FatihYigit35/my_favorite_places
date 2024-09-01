@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_favorite_places/provider/place_provider.dart';
-import 'package:my_favorite_places/screen/new_place_screen.dart';
-import 'package:my_favorite_places/widget/place_list_item.dart';
+
+import '../provider/place_provider.dart';
+import '../widget/place_list_item.dart';
+import './new_place_screen.dart';
 
 class FavoritePlacesScreen extends ConsumerStatefulWidget {
   const FavoritePlacesScreen({super.key});
