@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_favorite_places/widget/image_input.dart';
 
 import '../model/place_item.dart';
 import '../provider/place_provider.dart';
@@ -59,6 +60,10 @@ class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
                 },
                 onSaved: (newValue) => place.description = newValue,
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              ImageInput(),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _savePlace,
