@@ -30,7 +30,7 @@ class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
       appBar: AppBar(
         title: const Text('Add New Place'),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(12.0),
         child: Form(
           key: _formKey,
@@ -63,7 +63,11 @@ class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
               const SizedBox(
                 height: 20,
               ),
-              ImageInput(),
+              ImageInput(
+                onSelectedImage: (image) {
+                  place.image = image;
+                },
+              ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _savePlace,
