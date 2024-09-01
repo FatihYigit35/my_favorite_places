@@ -5,17 +5,11 @@ import '../provider/place_provider.dart';
 import '../widget/place_list_item.dart';
 import './new_place_screen.dart';
 
-class FavoritePlacesScreen extends ConsumerStatefulWidget {
+class FavoritePlacesScreen extends ConsumerWidget {
   const FavoritePlacesScreen({super.key});
 
   @override
-  ConsumerState<FavoritePlacesScreen> createState() =>
-      _FavoritePlacesScreenState();
-}
-
-class _FavoritePlacesScreenState extends ConsumerState<FavoritePlacesScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final places = ref.watch(placeProvider);
 
     Widget content = const Center(
