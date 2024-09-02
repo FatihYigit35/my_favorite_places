@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:my_favorite_places/data/constants.dart';
 
-import '../model/place_item.dart';
+import '../model/place.dart';
 import '../screen/detail_place_screen.dart';
 
 class PlaceListItem extends StatelessWidget {
   const PlaceListItem({super.key, required this.place});
-  final PlaceItem place;
+  final Place place;
 
   @override
   Widget build(BuildContext context) {

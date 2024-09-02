@@ -4,7 +4,7 @@ import 'package:my_favorite_places/widget/image_input.dart';
 import 'package:my_favorite_places/widget/location_input.dart';
 import 'package:my_favorite_places/widget/text_input_field_item.dart';
 
-import '../model/place_item.dart';
+import '../model/place.dart';
 import '../provider/place_provider.dart';
 
 class NewPlaceScreen extends ConsumerStatefulWidget {
@@ -16,7 +16,7 @@ class NewPlaceScreen extends ConsumerStatefulWidget {
 
 class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
-  final place = PlaceItem();
+  final place = Place();
 
   void _savePlace() {
     if (_formKey.currentState!.validate()) {
@@ -39,11 +39,13 @@ class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
           child: Column(
             children: [
               TextInputFieldItem(
-                  label: 'Title',
-                  onSaved: (newValue) => place.title = newValue),
+                label: 'Title',
+                onSaved: (newValue) => place.title = newValue,
+              ),
               TextInputFieldItem(
-                  label: 'Description',
-                  onSaved: (newValue) => place.description = newValue),
+                label: 'Description',
+                onSaved: (newValue) => place.description = newValue,
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -53,7 +55,11 @@ class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
                 },
               ),
               const SizedBox(height: 20),
-              const LocationInput(),
+              LocationInput(
+                onSelectLocation: (location) {
+                  place.location = location;
+                },
+              ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _savePlace,
