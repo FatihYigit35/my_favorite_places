@@ -2,35 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../provider/place_provider.dart';
-import '../widget/place_list_item.dart';
+import '../widget/places_list.dart';
 import './new_place_screen.dart';
 
-class FavoritePlacesScreen extends ConsumerWidget {
+class FavoritePlacesScreen extends ConsumerStatefulWidget {
   const FavoritePlacesScreen({super.key});
+  @override
+  ConsumerState<FavoritePlacesScreen> createState() =>
+      _FavoritePlacesScreenState();
+}
+
+class _FavoritePlacesScreenState extends ConsumerState<FavoritePlacesScreen> {
+  late Future<void> _placesFuture;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  void initState() {
+    super.initState();
+    _placesFuture = ref.read(placeProvider.notifier).loadPlaces();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final places = ref.watch(placeProvider);
-
-    Widget content = const Center(
-      child: Text(
-        'No place added yet',
-        style: TextStyle(
-          fontSize: 20,
-        ),
-      ),
-    );
-
-    if (places.isNotEmpty) {
-      content = ListView.builder(
-        itemCount: places.length,
-        itemBuilder: (context, index) {
-          return PlaceListItem(
-            place: places[index],
-          );
-        },
-      );
-    }
 
     return Scaffold(
         appBar: AppBar(
@@ -46,6 +39,13 @@ class FavoritePlacesScreen extends ConsumerWidget {
             ),
           ],
         ),
-        body: content);
+        body: FutureBuilder(
+            future: _placesFuture,
+            builder: (context, snapshot) =>
+                snapshot.connectionState == ConnectionState.waiting
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : PlacesList(places: places)));
   }
 }
