@@ -26,26 +26,28 @@ class _FavoritePlacesScreenState extends ConsumerState<FavoritePlacesScreen> {
     final places = ref.watch(placeProvider);
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Your Places'),
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const NewPlaceScreen(),
-                ));
-              },
-              icon: const Icon(Icons.add),
-            ),
-          ],
-        ),
-        body: FutureBuilder(
-            future: _placesFuture,
-            builder: (context, snapshot) =>
-                snapshot.connectionState == ConnectionState.waiting
-                    ? const Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : PlacesList(places: places)));
+      appBar: AppBar(
+        title: const Text('Your Places'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const NewPlaceScreen(),
+              ));
+            },
+            icon: const Icon(Icons.add),
+          ),
+        ],
+      ),
+      body: FutureBuilder(
+        future: _placesFuture,
+        builder: (context, snapshot) =>
+            snapshot.connectionState == ConnectionState.waiting
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : PlacesList(places: places),
+      ),
+    );
   }
 }

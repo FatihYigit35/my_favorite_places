@@ -19,4 +19,17 @@ class Place {
   String? description;
   File? image;
   PlaceLocation? location;
+
+  Map<String, Object?> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'image': image?.path,
+      'location': location,
+      'lat': location?.latitude,
+      'lng': location?.longitude,
+      'address': location?.address,
+    };
+  }
 }

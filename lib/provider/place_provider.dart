@@ -12,13 +12,14 @@ import '../model/place.dart';
 Future<Database> _getDatabase() async {
   final dbPath = await sql.getDatabasesPath();
   final db = await sql.openDatabase(
-    path.join(dbPath, 'places.sqlite'),
+    path.join(dbPath, 'places.db'),
     onCreate: (db, version) {
       return db.execute(
           'CREATE TABLE favorite_places(id TEXT PRIMARY KEY, title TEXT, description TEXT, image TEXT, lat REAL, lng REAL, address TEXT)');
     },
     version: 1,
   );
+
   return db;
 }
 
@@ -65,19 +66,9 @@ class PlaceNotifier extends StateNotifier<List<Place>> {
 
     final db = await _getDatabase();
 
-    db.insert('favorite_places', {
-      'id': place.id,
-      'title': place.title,
-      'description': place.description,
-      'image': place.image?.path,
-      'lat': place.location?.latitude,
-      'lng': place.location?.longitude,
-      'address': place.location?.address,
-    });
+    db.insert('favorite_places', place.toMap());
 
-    final newList = state.toList();
-    newList.add(place);
-    state = newList;
+    state = [place, ...state];
   }
 
   List<Place> getPlaces() {
