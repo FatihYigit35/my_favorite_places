@@ -11,7 +11,8 @@ class Place {
     this.description,
     this.image,
     this.location,
-  }) : id = uuid.generate();
+    String? id,
+  }) : id = id ?? uuid.generate();
 
   final String id;
   String? title;
