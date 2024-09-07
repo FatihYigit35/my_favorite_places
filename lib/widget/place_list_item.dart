@@ -10,20 +10,6 @@ class PlaceListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //   return Padding(
-    //     padding: const EdgeInsets.all(8.0),
-    //     child: InkWell(
-    //       onTap: () {
-    //         Navigator.of(context).push(MaterialPageRoute(
-    //           builder: (context) => DetailPlaceScreen(place: place),
-    //         ));
-    //       },
-    //       child: Text(
-    //         place.title ?? 'No title entered',
-    //         style: const TextStyle(fontSize: 20),
-    //       ),
-    //     ),
-    //   );
     final image = place.image;
 
     return ListTile(
