@@ -40,7 +40,7 @@ class PlaceNotifier extends StateNotifier<List<Place>> {
             location: PlaceLocation(
               latitude: e['lat'] as double,
               longitude: e['lng'] as double,
-              address: e['address'] as String,
+              address: e['address'] != null ? e['address'] as String : '',
             ),
           ),
         )

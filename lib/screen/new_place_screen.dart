@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_favorite_places/model/place_location.dart';
 import 'package:my_favorite_places/widget/image_input.dart';
 import 'package:my_favorite_places/widget/location_input.dart';
 import 'package:my_favorite_places/widget/text_input_field_item.dart';
@@ -16,7 +19,12 @@ class NewPlaceScreen extends ConsumerStatefulWidget {
 
 class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
   final _formKey = GlobalKey<FormState>();
-  final place = Place();
+  final place = Place(
+    title: '',
+    description: '',
+    image: File(''),
+    location: const PlaceLocation(latitude: 0.00, longitude: 0.00, address: ''),
+  );
 
   void _savePlace() {
     if (_formKey.currentState!.validate()) {
@@ -40,11 +48,11 @@ class _NewPlaceScreenState extends ConsumerState<NewPlaceScreen> {
             children: [
               TextInputFieldItem(
                 label: 'Title',
-                onSaved: (newValue) => place.title = newValue,
+                onSaved: (newValue) => place.title = newValue!,
               ),
               TextInputFieldItem(
                 label: 'Description',
-                onSaved: (newValue) => place.description = newValue,
+                onSaved: (newValue) => place.description = newValue!,
               ),
               const SizedBox(
                 height: 20,

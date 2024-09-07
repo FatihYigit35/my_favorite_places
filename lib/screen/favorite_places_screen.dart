@@ -13,12 +13,10 @@ class FavoritePlacesScreen extends ConsumerStatefulWidget {
 }
 
 class _FavoritePlacesScreenState extends ConsumerState<FavoritePlacesScreen> {
-  late Future<void> _placesFuture;
-
   @override
   void initState() {
     super.initState();
-    _placesFuture = ref.read(placeProvider.notifier).loadPlaces();
+    ref.read(placeProvider.notifier).loadPlaces();
   }
 
   @override
@@ -39,15 +37,7 @@ class _FavoritePlacesScreenState extends ConsumerState<FavoritePlacesScreen> {
           ),
         ],
       ),
-      body: FutureBuilder(
-        future: _placesFuture,
-        builder: (context, snapshot) =>
-            snapshot.connectionState == ConnectionState.waiting
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : PlacesList(places: places),
-      ),
+      body: PlacesList(places: places),
     );
   }
 }

@@ -2,10 +2,10 @@ class PlaceLocation {
   const PlaceLocation({
     required this.latitude,
     required this.longitude,
-    this.address,
+    required this.address,
   });
 
   final double latitude;
   final double longitude;
-  final String? address;
+  final String address;
 }
