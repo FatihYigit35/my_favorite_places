@@ -5,21 +5,19 @@ import 'package:my_favorite_places/theme/dark_theme.dart';
 import 'package:my_favorite_places/theme/light_theme.dart';
 
 void main() {
-  runApp(const ProviderScope(
-    child: MainApp(),
-  ));
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'My Favorite Places',
-      theme: lightTheme,
-      darkTheme: darkTheme,
-      home: const FavoritePlacesScreen(),
-    );
-  }
+  Widget build(BuildContext context) => ProviderScope(
+        child: MaterialApp(
+          title: 'My Favorite Places',
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          home: const FavoritePlacesScreen(),
+        ),
+      );
 }
