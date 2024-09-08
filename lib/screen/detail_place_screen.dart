@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../data/constants.dart';
 import '../model/place.dart';
 import '../widget/text_detail_place_screen.dart';
 
@@ -13,26 +12,20 @@ class DetailPlaceScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final image = place.image;
 
-    Widget imageWidget = Image.asset(placeholderImage);
+    Widget imageWidget = Image.file(
+      image,
+      fit: BoxFit.fitHeight,
+    );
 
-    if (image != null) {
-      imageWidget = Image.file(
-        image,
-        fit: BoxFit.fitHeight,
-      );
-    }
-
-    final latitude = place.location?.latitude;
-    final longitude = place.location?.longitude;
+    final latitude = place.location.latitude;
+    final longitude = place.location.longitude;
     var locationText = 'No location entered';
 
-    if (latitude != null && longitude != null) {
-      locationText = '$latitude, $latitude';
-    }
+    locationText = '$latitude, $longitude';
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(place.title ?? 'No title entered'),
+        title: Text(place.title),
       ),
       body: Column(
         children: [
@@ -58,7 +51,7 @@ class DetailPlaceScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextDetailPlaceScreen(
-              text: place.description ?? 'No description entered',
+              text: place.description,
             ),
           ),
         ],

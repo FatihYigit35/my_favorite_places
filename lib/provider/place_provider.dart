@@ -26,7 +26,7 @@ Future<Database> _getDatabase() async {
 class PlaceNotifier extends StateNotifier<List<Place>> {
   PlaceNotifier() : super(const []);
 
-  Future<void> loadPlaces() async {
+  void loadPlaces() async {
     final db = await _getDatabase();
     final data = await db.query('favorite_places');
 
@@ -52,11 +52,7 @@ class PlaceNotifier extends StateNotifier<List<Place>> {
   void addPlace(Place place) async {
     final appDir = await syspaths.getApplicationDocumentsDirectory();
 
-    if (place.image == null) {
-      return;
-    }
-
-    final image = place.image!;
+    final image = place.image;
 
     final fileName = path.basename(image.path);
 
@@ -69,10 +65,6 @@ class PlaceNotifier extends StateNotifier<List<Place>> {
     db.insert('favorite_places', place.toMap());
 
     state = [place, ...state];
-  }
-
-  List<Place> getPlaces() {
-    return state;
   }
 }
 

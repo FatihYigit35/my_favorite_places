@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_favorite_places/data/constants.dart';
 
 import '../model/place.dart';
 import '../screen/detail_place_screen.dart';
@@ -15,17 +14,15 @@ class PlaceListItem extends StatelessWidget {
     return ListTile(
       leading: CircleAvatar(
         radius: 30,
-        backgroundImage: image != null
-            ? FileImage(image)
-            : const AssetImage(placeholderImage),
+        backgroundImage: FileImage(image),
       ),
       title: Text(
-        place.title ?? 'No title entered',
+        place.title,
         style: const TextStyle(
           fontSize: 20,
         ),
       ),
-      subtitle: Text(place.description ?? 'No description entered'),
+      subtitle: Text(place.description),
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => DetailPlaceScreen(place: place),
