@@ -26,7 +26,6 @@ class Place {
       'title': title,
       'description': description,
       'image': image.path,
-      'location': location,
       'lat': location.latitude,
       'lng': location.longitude,
       'address': location.address,
